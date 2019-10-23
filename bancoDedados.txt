@@ -1,0 +1,142 @@
+                                // motorista
+
+'use strict'
+
+/** @type {import('@adonisjs/lucid/src/Schema')} */
+const Schema = use('Schema')
+
+class TabelaMotoristaSchema extends Schema {
+  up() {
+    this.create('tabela_motoristas', (table) => {
+      table.increments()
+      table.integer('profile_id')
+        .unsigned()
+        .references('id')
+        .inTable('tabela_profile')
+        .onUpdate('CASCADE')
+        .onDelete('SET NULL')
+      table.integer('carro_id')
+        .unsigned()
+        .references('id')
+        .inTable('tabela_carros')
+        .onUpdate('CASCADE')
+        .onDelete('SET NULL')
+      table.string('foto_cnh_motorista').notNullable()
+      table.timestamps()
+    })
+  }
+
+  down() {
+    this.drop('tabela_motoristas')
+  }
+}
+
+module.exports = TabelaMotoristaSchema
+
+
+                                //investidor
+
+'use strict'
+
+/** @type {import('@adonisjs/lucid/src/Schema')} */
+const Schema = use('Schema')
+
+class TabelaInvestidoresSchema extends Schema {
+  up() {
+    this.create('tabela_investidores', (table) => {
+      table.increments()
+      table.integer('user_id')
+        .unsigned()
+        .references('id')
+        .inTable('users')
+        .onUpdate('CASCADE')
+        .onDelete('SET NULL')
+      table.string('valor_quota_investidor', 60).notNullable()
+      table.timestamps()
+    })
+  }
+
+  down() {
+    this.drop('tabela_investidores')
+  }
+}
+
+module.exports = TabelaInvestidoresSchema
+
+                           // carro
+
+'use strict'
+
+/** @type {import('@adonisjs/lucid/src/Schema')} */
+const Schema = use('Schema')
+
+class UserSchema extends Schema {
+  up() {
+    this.create('tabela_carros', (table) => {
+      table.increments()
+      table.string('modelo_carro', 80).notNullable()
+      table.string('ano_carro', 254).notNullable()
+      table.string('combustivel_carro', 60).notNullable()
+      table.string('no_ocupantes_carro', 60).notNullable()
+      table.string('cor_carro', 60).notNullable()
+      table.string('no_renavem', 60).notNullable()
+      table.string('placa_carro', 60).notNullable().unique()
+      table.string('obs_carro', 250).notNullable()
+      table.timestamps()
+    })
+  }
+
+  down() {
+    this.drop('tabela_carros')
+  }
+}
+
+module.exports = UserSchema
+
+                        // profile
+
+'use strict'
+
+/** @type {import('@adonisjs/lucid/src/Schema')} */
+const Schema = use('Schema')
+
+class TabelaProfileSchema extends Schema {
+  up() {
+    this.create('tabela_profile', (table) => {
+      table.increments()
+      table.integer('user_id')
+        .unsigned()
+        .references('id')
+        .inTable('users')
+        .onUpdate('CASCADE')
+        .onDelete('SET NULL')
+        
+      table.integer('motorista_id')
+        .unsigned()
+        .references('id')
+        .inTable('tabela_motoristas')
+        .onUpdate('CASCADE')
+        .onDelete('SET NULL')
+
+        table.integer('id_motorista')
+          .unsigned()
+          .references('id')
+          .inTable('tabela_investidores')
+          .onUpdate('CASCADE')
+          .onDelete('SET NULL')
+
+      table.string('cpf_user', 60).notNullable()
+      table.string('cep_user', 60).notNullable()
+      table.string('numero_user', 60).notNullable()
+      table.string('complemento_user', 60).notNullable()
+      table.string('celular_user', 60).notNullable()
+      table.timestamps()
+    })
+  }
+
+  down() {
+    this.drop('tabela_Profile')
+  }
+}
+
+module.exports = TabelapProfileSchema

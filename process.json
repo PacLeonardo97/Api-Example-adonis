@@ -1,0 +1,20 @@
+{
+    "apps": [
+        {
+            "name": "HTTP-API",
+            "script": "server.js"
+        }
+    ],
+    "deploy": {
+        "production": {
+            "user": "ubuntu",
+            "host": [
+                "10.101.0.77"
+            ],
+            "ref": "origin/master",
+            "repo": "git@github.com:Username/repository.git",
+            "path": "/var/www/my-repository",
+            "post-deploy": "npm install; pm2 start server.js"
+        }
+    }
+}

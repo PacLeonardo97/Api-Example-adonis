@@ -1,0 +1,1047 @@
+{
+	"info": {
+		"_postman_id": "dc01fe26-2501-48fc-8473-0de3d4ca1e00",
+		"name": "ApiRestart",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome_user",
+									"value": "primeiro",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "primeiro@usuario.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "tipo_entrada_usercpf_profile",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show All user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:3333/user/index",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"user",
+								"index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Session",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c4d2c71c-786f-44bd-85ae-a3a2158012e6",
+								"exec": [
+									"const response = pm.response.json();",
+									"pm.environment.set(\"token\", response.token);",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "primeiro@usuario.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/sessions",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show my user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Show all Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/profile/index",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"profile",
+								"index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "driver_id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "id_investor",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "cpf_profile",
+									"value": "12445345",
+									"type": "text"
+								},
+								{
+									"key": "cep_profile",
+									"value": "45343453",
+									"type": "text"
+								},
+								{
+									"key": "endereco_profile",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "bairro_profile",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "cidade_profile",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "Estado_profile",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "numero_casa_profile",
+									"value": "453453",
+									"type": "text"
+								},
+								{
+									"key": "complemento_profile",
+									"value": "453453",
+									"type": "text"
+								},
+								{
+									"key": "celular_profile",
+									"value": "453453",
+									"type": "text"
+								},
+								{
+									"key": "Type_input",
+									"value": "driver",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/profile/store",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"profile",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cpf_profile",
+									"value": "12445345",
+									"type": "text"
+								},
+								{
+									"key": "cep_profile",
+									"value": "45343453",
+									"type": "text"
+								},
+								{
+									"key": "endereco_profile",
+									"value": "dfgfgtdfgdfg",
+									"type": "text"
+								},
+								{
+									"key": "bairro_profile",
+									"value": "dfgdfggdf",
+									"type": "text"
+								},
+								{
+									"key": "cidade_profile",
+									"value": "dfgdfgdfg",
+									"type": "text"
+								},
+								{
+									"key": "Estado_profile",
+									"value": "dfgdfgdfg",
+									"type": "text"
+								},
+								{
+									"key": "numero_casa_profile",
+									"value": "453453",
+									"type": "text"
+								},
+								{
+									"key": "complemento_profile",
+									"value": "453453",
+									"type": "text"
+								},
+								{
+									"key": "celular_profile",
+									"value": "453453678678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/profile/update/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"profile",
+								"update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show One Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/profile/show/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"profile",
+								"show",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Investor",
+			"item": [
+				{
+					"name": "Create Investor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "valor_quota_investor",
+									"value": "111",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/investor/store",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"investor",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show all Investors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/investor/index",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"investor",
+								"index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show One Investor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/investor/show/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"investor",
+								"show",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Investor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "valor_quota_investor",
+									"value": "8789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/driver/update/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"driver",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Driver",
+			"item": [
+				{
+					"name": "Create Driver",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "car_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "foto_cnh_driver",
+									"value": "sdhiii",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/Driver/store",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"Driver",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show all Driver",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/Driver/index",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"Driver",
+								"index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show my driver",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/driver/show/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"driver",
+								"show",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Driver",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "foto_cnh_driver",
+									"value": "Deu certo",
+									"type": "text"
+								},
+								{
+									"key": "numero_cnh_driver",
+									"value": "asdasd",
+									"type": "text"
+								},
+								{
+									"key": "curriculo_cnh",
+									"value": "asdasd",
+									"type": "text"
+								},
+								{
+									"key": "foto_3x4",
+									"value": "adad",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/driver/update/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"driver",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Car",
+			"item": [
+				{
+					"name": "Create Car",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "modelo_car",
+									"value": "Gol",
+									"type": "text"
+								},
+								{
+									"key": "ano_car",
+									"value": "1970",
+									"type": "text"
+								},
+								{
+									"key": "combustivel_car",
+									"value": "Gasosa",
+									"type": "text"
+								},
+								{
+									"key": "no_ocupantes_car",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "cor_car",
+									"value": "Preto",
+									"type": "text"
+								},
+								{
+									"key": "no_renavem",
+									"value": "49871654984",
+									"type": "text"
+								},
+								{
+									"key": "placa_car",
+									"value": "ABC-1235",
+									"type": "text"
+								},
+								{
+									"key": "obs_car",
+									"value": "Este carro é muito lindo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/car/Store",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"car",
+								"Store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show all Car ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:3333/car/index",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"car",
+								"index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show my Car",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "id ",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3333/car/show/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"car",
+								"show",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update car",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "modelo_car",
+									"value": "Gol",
+									"type": "text"
+								},
+								{
+									"key": "ano_car",
+									"value": "1970",
+									"type": "text"
+								},
+								{
+									"key": "combustivel_car",
+									"value": "Gasosa",
+									"type": "text"
+								},
+								{
+									"key": "no_ocupantes_car",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "cor_car",
+									"value": "Preto",
+									"type": "text"
+								},
+								{
+									"key": "no_renavem",
+									"value": "49871654984",
+									"type": "text"
+								},
+								{
+									"key": "placa_car",
+									"value": "ABC-1235",
+									"type": "text"
+								},
+								{
+									"key": "obs_car",
+									"value": "Este carro é muito lindooooo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/car/update/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"car",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "File",
+			"item": [
+				{
+					"name": "FileUpload",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/jjcdev1/Desktop/Screen Shot 2019-07-19 at 6.22.52 PM.png"
+								},
+								{
+									"key": "name",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "subtype",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/file/store",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"file",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/file/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"file",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Central",
+			"item": [
+				{
+					"name": "Create Central",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show akk Driver",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
